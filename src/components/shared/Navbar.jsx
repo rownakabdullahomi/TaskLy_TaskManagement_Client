@@ -4,24 +4,23 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import userImage from "../../assets/user.gif";
-// import useRole from "../../hooks/useRole";
-// import { PiBellSimpleRinging } from "react-icons/pi";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, userLogout } = useContext(AuthContext);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const profileDropdownRef = useRef(null);
-//   const [userType] = useRole();
-
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.documentElement.setAttribute("data-theme", localTheme);
   }, [theme]);
 
+  // Toggle Theme
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
@@ -66,35 +65,12 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      {user && (
-        <>
-          {/* <li>
-            <NavLink
-              to={
-                userType === "User"
-                  ? "/dashboard/bookParcel"
-                  : userType === "DeliveryMan"
-                  ? "/dashboard/myDeliveryList"
-                  : "/dashboard/statistics"
-              }
-            >
-              Dashboard
-            </NavLink>
-          </li> */}
-          <li>
-            <NavLink to={"/myProfile"}>My Profile</NavLink>
-          </li>
-        </>
-      )}
+
+
       <li>
         <NavLink to="/about">About Us</NavLink>
       </li>
-      {/* <li>
-        <NavLink to="/contact">Contact Us</NavLink>
-      </li> */}
-      <li>
-        <NavLink to="/blogs">Blogs</NavLink>
-      </li>
+
     </>
   );
 
@@ -109,8 +85,7 @@ const Navbar = () => {
           >
             <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 blur-lg opacity-30 group-hover:opacity-70 transition-opacity duration-300"></span>
             <div className="relative text-gray-700 group-hover:text-white transition-colors duration-300">
-              <span className="text-yellow-600">S</span>wift
-              <span className="text-red-600">P</span>arcel
+              Taskly
             </div>
           </Link>
 
@@ -143,8 +118,7 @@ const Navbar = () => {
                     to={"/"}
                     className="flex gap-0 relative text-gray-500 group-hover:text-white transition-colors duration-300"
                   >
-                    <span className="text-yellow-600">S</span>wift
-                    <span className="text-red-600">P</span>arcel
+                    Taskly
                   </Link>
                 </li>
                 <div className="font-semibold text-yellow-500">{links}</div>
@@ -161,13 +135,6 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="flex items-center space-x-4">
-          {/* <p className="text-sm text-gray-500">{user && user.email}</p> */}
-
-          {/* notification icon */}
-          {/* <button className="text-2xl text-orange-500 p-2">
-            <PiBellSimpleRinging></PiBellSimpleRinging>
-          </button> */}
-
           {/* Theme Toggle */}
           <button
             className="p-2 text-2xl"
@@ -192,7 +159,7 @@ const Navbar = () => {
               aria-label="Toggle Profile Dropdown"
             >
               <div className="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden border border-gray-300 bg-gray-200">
-                {user && user.email ? (
+                {user && user?.email ? (
                   <img
                     referrerPolicy="no-referrer"
                     alt="User Profile"
@@ -207,30 +174,17 @@ const Navbar = () => {
             {profileDropdownOpen && (
               <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 {/* Username (non-clickable) */}
-                <li>
-                  <div
-                    id="name"
-                    className="justify-between text-base-content font-semibold"
-                  >
-                    {user?.email ? user.displayName : ""}
-                  </div>
-                </li>
+                {user?.email && (
+                  <li>
+                    <div
+                      id="name"
+                      className="justify-between text-base-content font-semibold"
+                    >
+                      {user?.displayName}
+                    </div>
+                  </li>
+                )}
 
-                {/* Other Dropdown Items */}
-                {/* <li>
-                  <Link
-                    to={
-                      userType === "User"
-                        ? "/dashboard/bookParcel"
-                        : userType === "DeliveryMan"
-                        ? "/dashboard/myDeliveryList"
-                        : "/dashboard/statistics"
-                    }
-                    className="justify-between text-base-content font-semibold"
-                  >
-                    Dashboard
-                  </Link>
-                </li> */}
 
                 <li>
                   {user && user?.email ? (
