@@ -3,20 +3,22 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaHome, FaSignInAlt } from "react-icons/fa";
-import axios from "axios";
+
 import LoginGif from "../assets/Computer login.gif";
 import { useAuthContext } from "../providers/AuthProvider";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { userLogin, setUser, googleLogin } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
-
+  const axiosPublic = useAxiosPublic();
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+   
 
     userLogin(email, password)
       .then((res) => {
@@ -48,7 +50,7 @@ const Login = () => {
         createdAt,
       };
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/users`, newUser);
+      await axiosPublic.post(`/users`, newUser);
     } catch (error) {
       toast.error("Google login failed! " + error.message);
     }

@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-
-
 import { FaEye, FaEyeSlash, FaHome, FaUserPlus } from "react-icons/fa";
-import axios from "axios";
 import RegisterGif from "../assets/Sign up.gif";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../providers/AuthProvider";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
   const navigate = useNavigate();
   const { userRegister, setUser, googleLogin, updateUserProfile } =
     useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
+  const axiosPublic = useAxiosPublic()
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -45,7 +44,7 @@ const Register = () => {
 
         const createdAt = res.user.metadata.creationTime;
         const newUser = { name, email, photo, createdAt };
-        axios.post(`${import.meta.env.VITE_API_URL}/users`, newUser);
+        axiosPublic.post(`/users`, newUser);
       })
       .catch((error) => {
         toast.error("Registration Failed! " + error.message);
@@ -67,7 +66,7 @@ const Register = () => {
           photo: user?.photoURL,
           createdAt,
         };
-        axios.post(`${import.meta.env.VITE_API_URL}/users`, newUser);
+        axiosPublic.post(`/users`, newUser);
       })
       .catch((error) => {
         toast.error("Google login failed! " + error.message);
