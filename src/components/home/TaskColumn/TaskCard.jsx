@@ -50,11 +50,11 @@ const TaskCard = ({ task, index }) => {
       </p>
       <div className="flex gap-3 mt-4">
         <FaEdit
-          className="text-green-500 cursor-pointer"
+          className="text-primary cursor-pointer"
           onClick={() => handleEditTaskClick(task)}
         />
         <FaTrash
-          className="text-red-500 cursor-pointer"
+          className="text-error cursor-pointer"
           onClick={() => handleDeleteTaskClick(task._id)}
         />
       </div>

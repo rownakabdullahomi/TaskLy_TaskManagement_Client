@@ -14,10 +14,10 @@ const Home = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="mt-20  min-h-screen px-2 sm:px-4 lg:px-6 bg-base-100">
+      <div className="mt-24 mb-8   px-2 sm:px-4 lg:px-6 bg-base-100">
         <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory">
           {["todo", "inprogress", "done"].map((status) => (
-            <div key={status} className="snap-start min-w-full sm:min-w-0 flex flex-col flex-grow">
+            <div key={status} className="snap-start min-w-full sm:min-w-0 flex flex-col flex-grow min-h-[calc(100vh-195px)]">
               <TaskColumn status={status} />
             </div>
           ))}

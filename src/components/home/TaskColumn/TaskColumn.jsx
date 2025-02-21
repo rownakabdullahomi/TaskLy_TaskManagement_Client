@@ -10,7 +10,7 @@ const ItemTypes = {
 };
 
 const TaskColumn = ({ status }) => {
-  const { tasks, handleDropTask, handleAddTaskClick} = useTaskContext();
+  const { tasks, handleDropTask, handleAddTaskClick } = useTaskContext();
 
   const [, drop] = useDrop({
     accept: ItemTypes.TASK,
@@ -18,24 +18,31 @@ const TaskColumn = ({ status }) => {
   });
 
   return (
-    <div ref={drop} className="bg-base-200 p-4 rounded-lg hover:bg-base-300 border border-warning flex-1">
-      <h2 className="text-xl font-bold capitalize mb-4">{status === "inprogress"? "In Progress" : status === "todo" ? "Todo" : "Done"}</h2>
-      {tasks.filter(task => task.status === status).map((task, index) => (
-        <TaskCard
-          key={task._id}
-          task={task}
-          index={index}
-        />
-      ))}
+    <div
+      ref={drop}
+      className="bg-base-200 p-4 rounded-lg hover:bg-base-300 border border-warning flex-1 h-full"
+    >
+      <h2 className="text-xl font-bold capitalize mb-4">
+        {status === "inprogress"
+          ? "In Progress"
+          : status === "todo"
+          ? "Todo"
+          : "Done"}
+      </h2>
       {status === "todo" && (
         <div
           onClick={handleAddTaskClick}
-          className="border-2 border-dashed border-gray-400 rounded-2xl flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 p-4"
+          className="border-2 border-dashed border-gray-400 rounded-2xl flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 p-4 mb-4"
         >
           <FaPlus size={40} className="text-gray-500" />
           <p className="text-gray-600 mt-2">Add New Task</p>
         </div>
       )}
+      {tasks
+        .filter((task) => task.status === status)
+        .map((task, index) => (
+          <TaskCard key={task._id} task={task} index={index} />
+        ))}
     </div>
   );
 };
