@@ -3,7 +3,6 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import TaskColumn from "../components/home/TaskColumn/TaskColumn";
 import { useTaskContext } from "../providers/TaskProvider";
 
-
 const Home = () => {
   const {
     showModal,
@@ -15,23 +14,27 @@ const Home = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="my-20 h-screen grid grid-cols-3 gap-4 px-4 lg:px-6">
-        {["todo", "inprogress", "done"].map((status) => (
-          <TaskColumn key={status} status={status} />
-        ))}
+      <div className="mt-20  min-h-screen px-2 sm:px-4 lg:px-6 bg-base-100">
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory">
+          {["todo", "inprogress", "done"].map((status) => (
+            <div key={status} className="snap-start min-w-full sm:min-w-0 flex flex-col flex-grow">
+              <TaskColumn status={status} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Task Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg w-96 p-6 relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-lg shadow-lg w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-6 relative">
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-2 right-2 text-error hover:text-red-500 text-xl font-bold"
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-center">
               {isEditing ? "Edit Task" : "Add New Task"}
             </h2>
             <form onSubmit={handleCreateOrUpdateTask}>

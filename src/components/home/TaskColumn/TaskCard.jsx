@@ -34,6 +34,17 @@ const TaskCard = ({ task, index }) => {
     >
       <h3 className="text-lg font-semibold">{task.name}</h3>
       <p className="my-2">{task.description}</p>
+      <p className={`my-2 badge badge-outline ${task.status === "inprogress"
+          ? "badge-warning"
+          : task.status === "todo"
+          ? "badge-secondary"
+          : "badge-accent"} `}>
+        {task.status === "inprogress"
+          ? "In Progress"
+          : task.status === "todo"
+          ? "Todo"
+          : "Done"}
+      </p>
       <p className="text-sm my-2">
         {moment(task.timeStamp).format("DD/MM/YYYY dddd hh.mm A")}
       </p>

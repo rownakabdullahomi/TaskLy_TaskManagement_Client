@@ -18,7 +18,7 @@ const TaskColumn = ({ status }) => {
   });
 
   return (
-    <div ref={drop} className="bg-base-200 p-4 rounded-lg hover:bg-base-300">
+    <div ref={drop} className="bg-base-200 p-4 rounded-lg hover:bg-base-300 border border-warning flex-1">
       <h2 className="text-xl font-bold capitalize mb-4">{status === "inprogress"? "In Progress" : status === "todo" ? "Todo" : "Done"}</h2>
       {tasks.filter(task => task.status === status).map((task, index) => (
         <TaskCard
