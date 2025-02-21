@@ -1,14 +1,14 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
 import userImage from "../../assets/user.gif";
+import { useAuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
   
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { user, userLogout } = useContext(AuthContext);
+  const { user, userLogout } = useAuthContext();
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const profileDropdownRef = useRef(null);
   const [theme, setTheme] = useState(

@@ -1,17 +1,18 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
+
 
 import { FaEye, FaEyeSlash, FaHome, FaUserPlus } from "react-icons/fa";
 import axios from "axios";
 import RegisterGif from "../assets/Sign up.gif";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
   const navigate = useNavigate();
   const { userRegister, setUser, googleLogin, updateUserProfile } =
-    useContext(AuthContext);
+    useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (e) => {

@@ -1,16 +1,16 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaHome, FaSignInAlt } from "react-icons/fa";
 import axios from "axios";
 import LoginGif from "../assets/Computer login.gif";
+import { useAuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userLogin, setUser, googleLogin } = useContext(AuthContext);
+  const { userLogin, setUser, googleLogin } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e) => {
