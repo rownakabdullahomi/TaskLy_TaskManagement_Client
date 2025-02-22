@@ -113,12 +113,12 @@ const Navbar = () => {
             {dropdownOpen && (
               <ul className="menu dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10">
                 <li className="font-bold italic text-xl my-2 mx-auto tracking-tight relative group">
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 blur-lg opacity-30 group-hover:opacity-70 transition-opacity duration-300 mb-5"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-green-600 to-purple-600 blur-lg opacity-30 group-hover:opacity-70 transition-opacity duration-300 mb-5"></span>
                   <Link
                     to={"/"}
                     className="flex gap-0 relative text-gray-500 group-hover:text-white transition-colors duration-300"
                   >
-                    Taskly
+                    <span className="text-warning">Task</span>ly
                   </Link>
                 </li>
                 <div className="font-semibold text-yellow-500">{links}</div>
