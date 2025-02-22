@@ -62,14 +62,14 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li>
+      {/* <li>
         <NavLink to="/">Home</NavLink>
       </li>
 
 
       <li>
         <NavLink to="/about">About Us</NavLink>
-      </li>
+      </li> */}
 
     </>
   );
@@ -83,9 +83,9 @@ const Navbar = () => {
             to="/"
             className="hidden lg:block text-4xl font-bold tracking-tight relative group"
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 blur-lg opacity-30 group-hover:opacity-70 transition-opacity duration-300"></span>
+            <span className="absolute inset-0 bg-gradient-to-r from-green-600 to-purple-600 blur-lg opacity-30 group-hover:opacity-70 transition-opacity duration-300"></span>
             <div className="relative text-gray-700 group-hover:text-white transition-colors duration-300">
-              Taskly
+            <span className="text-warning">Task</span>ly
             </div>
           </Link>
 

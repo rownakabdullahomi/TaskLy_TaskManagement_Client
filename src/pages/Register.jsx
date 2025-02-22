@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaHome, FaUserPlus } from "react-icons/fa";
-import RegisterGif from "../assets/Sign up.gif";
+import RegisterGif from "../assets/RegisterGif.gif";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../providers/AuthProvider";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -84,12 +84,12 @@ const Register = () => {
             className="lg:max-h-[400px] w-auto object-contain"
           />
           {/* Back to Home Button */}
-          <button
+          {/* <button
             onClick={() => navigate("/")}
             className="btn btn-outline btn-primary mt-5 w-full hover:!text-white transform hover:scale-105 transition duration-300"
           >
             <FaHome size={18} /> Back to Home
-          </button>
+          </button> */}
         </div>
 
         {/* Right Side - Form */}
@@ -110,7 +110,7 @@ const Register = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your full name"
-                className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
+                className="input input-bordered w-full mt-1 focus:ring focus:ring-warning"
                 required
               />
             </div>
@@ -122,7 +122,7 @@ const Register = () => {
                 type="text"
                 name="photo"
                 placeholder="Enter your Photo URL"
-                className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
+                className="input input-bordered w-full mt-1 focus:ring focus:ring-warning"
                 required
               />
             </div>
@@ -134,7 +134,7 @@ const Register = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
+                className="input input-bordered w-full mt-1 focus:ring focus:ring-warning"
                 required
               />
             </div>
@@ -149,7 +149,7 @@ const Register = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Create a password"
-                  className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
+                  className="input input-bordered w-full mt-1 focus:ring focus:ring-warning"
                   required
                 />
                 <button
@@ -170,7 +170,7 @@ const Register = () => {
               {/* Register Button */}
               <button
                 type="submit"
-                className="btn btn-secondary btn-outline w-full md:w-fit flex-1 hover:!text-white transform hover:scale-105 transition duration-300"
+                className="btn btn-warning btn-outline w-full md:w-fit flex-1 hover:!text-white transform hover:scale-105 transition duration-300"
               >
                 <FaUserPlus size={18} /> Register
               </button>
@@ -181,7 +181,7 @@ const Register = () => {
               {/* Social Register */}
               <div
                 onClick={handleGoogleLogin}
-                className="btn btn-outline flex items-center justify-center w-full md:w-fit transform hover:scale-105 transition duration-300"
+                className="btn btn-outline btn-accent hover:!text-white flex items-center justify-center w-full md:w-fit transform hover:scale-105 transition duration-300"
               >
                 <FcGoogle size={24} />
                 Register With Google
@@ -195,7 +195,7 @@ const Register = () => {
           {/* Login Link */}
           <p className="text-center text-sm text-gray-600 mt-4">
             Already have an account?{" "}
-            <Link to="/login" className="text-primary font-medium">
+            <Link to="/login" className="text-warning font-medium">
               Login here
             </Link>
           </p>
