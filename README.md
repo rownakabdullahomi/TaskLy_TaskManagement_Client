@@ -21,7 +21,7 @@
 - **State Management**: React Hooks, Context API  
 - **Authentication**: Firebase (Google, Email/Password)  
 - **Drag & Drop**: React DnD, dnd-multi-backend  
-- **Notifications**: React Hot Toast  
+- **Notifications**: React Hot Toast, Sweet Alert 2 
 - **Animations**: Framer Motion, Lottie React  
 
 ---
