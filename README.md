@@ -13,7 +13,7 @@
 
 ## ✨ Project Overview  
 
-**TaskLy** is an advanced **task management system** designed to help users organize their tasks into three categories: **To-Do, In Progress, and Done**. With a modern UI, seamless drag-and-drop functionality, authentication, and responsive design, TaskLy simplifies personal and professional task tracking.
+**TaskLy** is an advanced **task management system** designed to help users organize their tasks into three categories: **To-Do, In Progress, and Done**. With a modern UI, seamless drag-and-drop functionality, task reordering by drag-and-drop, authentication, and responsive design, TaskLy simplifies personal and professional task tracking.
 
 ### 🛠️ Technologies Used  
 - **Frontend**: React, Vite, Tailwind CSS, DaisyUI  
@@ -34,7 +34,8 @@
 ### 📌 **Task Management**  
 - Create, update, and delete tasks  
 - Categorize tasks into **To-Do, In Progress, and Done**  
-- Drag & Drop tasks between categories  
+- Drag & Drop tasks between categories
+- Drag & Drop tasks for reordering
 - Persistent task storage  
 
 ### 🎨 **User Experience Enhancements**  
@@ -74,8 +75,8 @@ Ensure you have **Node.js (v16+)** and **npm/yarn** installed.
 
 ### 2️⃣ Clone the Repository  
 ```sh
-git clone https://github.com/rownakabdullahomi/Taskly_TaskManagement_Client.git
-cd Taskly_TaskManagement_Client
+git clone https://github.com/rownakabdullahomi/TaskLy_TaskManagement_Client.git
+cd TaskLy_TaskManagement_Client
 ```
 
 ### 3️⃣ Install Dependencies  
