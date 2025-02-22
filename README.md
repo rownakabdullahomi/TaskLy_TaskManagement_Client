@@ -1,5 +1,6 @@
 # TaskLy - Task Management System - Client Side 🚀
 
+![TaskLy](https://i.ibb.co.com/nsCRL060/taskly2.png)
 ![TaskLy](https://i.ibb.co.com/RpNYPfYL/taskly1.png)
 
 ---
