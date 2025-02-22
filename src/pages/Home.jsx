@@ -2,6 +2,23 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import TaskColumn from "../components/home/TaskColumn/TaskColumn";
 import { useTaskContext } from "../providers/TaskProvider";
+import { TouchBackend } from "react-dnd-touch-backend";
+import { MultiBackend, TouchTransition } from "dnd-multi-backend";
+import { useEffect, useRef, useState } from "react";
+
+const DND_BACKEND = {
+  backends: [
+    {
+      backend: HTML5Backend,
+      preview: true,
+      transition: TouchTransition,
+    },
+    {
+      backend: TouchBackend,
+      options: { enableMouseEvents: true },
+    },
+  ],
+};
 
 const Home = () => {
   const {
@@ -12,12 +29,76 @@ const Home = () => {
     handleCreateOrUpdateTask,
   } = useTaskContext();
 
+  const scrollContainerRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const scrollSpeed = 8; // Increased for faster scroll
+  const edgeThreshold = 100; // Reduced so scrolling starts sooner
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // let scrollInterval = null;
+
+    const handleAutoScroll = (event) => {
+      if (!isDragging) return;
+
+      const touch = event.touches ? event.touches[0] : event;
+      const { clientX } = touch;
+      const { left, width } = container.getBoundingClientRect();
+
+      let scrollDirection = 0;
+
+      if (clientX < left + edgeThreshold) {
+        scrollDirection = -1; // Scroll left
+      } else if (clientX > left + width - edgeThreshold) {
+        scrollDirection = 1; // Scroll right
+      }
+
+      if (scrollDirection !== 0) {
+        requestAnimationFrame(() => {
+          container.scrollLeft += scrollSpeed * scrollDirection;
+        });
+      }
+    };
+
+    const handleDragStart = () => setIsDragging(true);
+    const handleDragEnd = () => {
+      setIsDragging(false);
+    };
+
+    const handleTouchStart = () => setIsDragging(true);
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+    };
+
+    container.addEventListener("dragstart", handleDragStart);
+    container.addEventListener("dragend", handleDragEnd);
+    container.addEventListener("touchstart", handleTouchStart);
+    container.addEventListener("touchend", handleTouchEnd);
+    container.addEventListener("touchmove", handleAutoScroll, { passive: false });
+
+    return () => {
+      container.removeEventListener("dragstart", handleDragStart);
+      container.removeEventListener("dragend", handleDragEnd);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
+      container.removeEventListener("touchmove", handleAutoScroll);
+    };
+  }, [isDragging]);
+
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="mt-24 mb-8   px-2 sm:px-4 lg:px-6 bg-base-100">
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory">
+    <DndProvider backend={MultiBackend} options={DND_BACKEND}>
+      <div className="mt-24 mb-8 px-2 sm:px-4 lg:px-6 bg-base-100">
+        <div
+          ref={scrollContainerRef}
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto sm:overflow-visible"
+        >
           {["todo", "inprogress", "done"].map((status) => (
-            <div key={status} className="snap-start min-w-full sm:min-w-0 flex flex-col flex-grow min-h-[calc(100vh-195px)]">
+            <div
+              key={status}
+              className="min-w-full sm:min-w-0 flex flex-col flex-grow min-h-[calc(100vh-195px)]"
+            >
               <TaskColumn status={status} />
             </div>
           ))}
