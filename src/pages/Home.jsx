@@ -125,7 +125,7 @@ const Home = () => {
                   type="text"
                   name="name"
                   defaultValue={currentTask?.name || ""}
-                  className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-400"
+                  className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-warning"
                   placeholder="Enter task name"
                   required
                 />
@@ -135,7 +135,7 @@ const Home = () => {
                 <textarea
                   name="description"
                   defaultValue={currentTask?.description || ""}
-                  className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-400"
+                  className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-warning"
                   placeholder="Enter description"
                   rows="4"
                   required
@@ -144,7 +144,7 @@ const Home = () => {
               <input
                 type="submit"
                 value={isEditing ? "Update Task" : "Create Task"}
-                className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+                className="w-full bg-warning text-white py-2 rounded hover:bg-success transition"
               />
             </form>
           </div>
