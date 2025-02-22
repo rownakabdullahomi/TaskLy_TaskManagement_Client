@@ -74,8 +74,8 @@ Ensure you have **Node.js (v16+)** and **npm/yarn** installed.
 
 ### 2️⃣ Clone the Repository  
 ```sh
-git clone https://github.com/your-username/TaskLy.git
-cd TaskLy
+git clone https://github.com/rownakabdullahomi/Taskly_TaskManagement_Client.git
+cd Taskly_TaskManagement_Client
 ```
 
 ### 3️⃣ Install Dependencies  
