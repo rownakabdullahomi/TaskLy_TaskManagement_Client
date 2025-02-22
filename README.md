@@ -14,7 +14,7 @@
 
 ## ✨ Project Overview  
 
-**TaskLy** is an advanced **task management system** designed to help users organize their tasks into three categories: **To-Do, In Progress, and Done**. With a modern UI, seamless drag-and-drop functionality, tasks reordering by drag-and-drop, track over due tasks, authentication, and responsive design, TaskLy simplifies personal and professional task tracking.
+**TaskLy** is an advanced **task management system** designed to help users organize their tasks into three categories: **To-Do, In Progress, and Done**. With a modern UI, seamless drag-and-drop functionality, tasks reordering by drag-and-drop, track overdue tasks, authentication, and responsive design, TaskLy simplifies personal and professional task tracking.
 
 ### 🛠️ Technologies Used  
 - **Frontend**: React, Vite, Tailwind CSS, DaisyUI  
@@ -37,7 +37,7 @@
 - Categorize tasks into **To-Do, In Progress, and Done**  
 - Drag & Drop tasks between categories
 - Drag & Drop tasks for reordering
-- Track over due tasks
+- Track overdue tasks
 - Persistent task storage  
 
 ### 🎨 **User Experience Enhancements**  
