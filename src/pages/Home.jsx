@@ -131,6 +131,17 @@ const Home = () => {
                 />
               </div>
               <div className="mb-4">
+                <label className="block font-semibold mb-1">Due Date</label>
+                <input
+                  type="date"
+                  name="dueDate"
+                  defaultValue={currentTask?.dueDate || ""}
+                  className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-warning"
+                  placeholder="Enter Due Date"
+                  required
+                />
+              </div>
+              <div className="mb-4">
                 <label className="block font-semibold mb-1">Description</label>
                 <textarea
                   name="description"
@@ -144,7 +155,7 @@ const Home = () => {
               <input
                 type="submit"
                 value={isEditing ? "Update Task" : "Create Task"}
-                className="w-full bg-warning text-white py-2 rounded hover:bg-success transition"
+                className="w-full bg-primary text-white py-2 rounded hover:bg-success transition"
               />
             </form>
           </div>

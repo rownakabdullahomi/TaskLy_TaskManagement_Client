@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useAuthContext } from "./AuthProvider";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const TaskContext = createContext();
 
@@ -83,17 +84,29 @@ const TaskProvider = ({ children }) => {
 
   // Handle Delete Task
   const handleDeleteTaskClick = async (taskId) => {
-    try {
-      const res = await axiosPublic.delete(`/tasks/${taskId}`);
-      if (res.data.deletedCount) {
-        toast.success("Task deleted successfully!");
-        refetch();
-      } else {
-        toast.error("Failed to delete task.");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosPublic.delete(`/tasks/${taskId}`);
+          if (res.data.deletedCount) {
+            Swal.fire("Deleted!", "Task deleted successfully.", "success");
+            refetch(); // Refresh the task list
+          } else {
+            Swal.fire("Error!", "Failed to delete task.", "error");
+          }
+        } catch (error) {
+          Swal.fire("Error!", "Error deleting task.", error);
+        }
       }
-    } catch (error) {
-      toast.error("Error deleting task.", error);
-    }
+    });
   };
 
   // Handle Create or Update Task
@@ -101,10 +114,11 @@ const TaskProvider = ({ children }) => {
     e.preventDefault();
     const name = e.target.name.value;
     const description = e.target.description.value;
+    const dueDate = e.target.dueDate.value;
 
     if (isEditing && currentTask) {
       try {
-        const updatedData = { name, description };
+        const updatedData = { name, description, dueDate };
         await axiosPublic.put(`/tasks/${currentTask._id}`, updatedData);
         toast.success("Task updated successfully!");
       } catch {
@@ -114,6 +128,7 @@ const TaskProvider = ({ children }) => {
       const newTask = {
         name,
         description,
+        dueDate,
         status: "todo",
         createdBy: user?.email,
         timeStamp: new Date(),

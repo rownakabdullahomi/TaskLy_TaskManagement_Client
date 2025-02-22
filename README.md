@@ -1,7 +1,8 @@
 # TaskLy - Task Management System - Client Side 🚀
 
-![TaskLy](https://i.ibb.co.com/nsCRL060/taskly2.png)
-![TaskLy](https://i.ibb.co.com/RpNYPfYL/taskly1.png)
+![TaskLy](https://i.ibb.co.com/jkDqtVCS/taskly1.png)
+![TaskLy](https://i.ibb.co.com/twFVjzMC/taskly2.png)
+
 
 ---
 
@@ -13,7 +14,7 @@
 
 ## ✨ Project Overview  
 
-**TaskLy** is an advanced **task management system** designed to help users organize their tasks into three categories: **To-Do, In Progress, and Done**. With a modern UI, seamless drag-and-drop functionality, task reordering by drag-and-drop, authentication, and responsive design, TaskLy simplifies personal and professional task tracking.
+**TaskLy** is an advanced **task management system** designed to help users organize their tasks into three categories: **To-Do, In Progress, and Done**. With a modern UI, seamless drag-and-drop functionality, tasks reordering by drag-and-drop, track over due tasks, authentication, and responsive design, TaskLy simplifies personal and professional task tracking.
 
 ### 🛠️ Technologies Used  
 - **Frontend**: React, Vite, Tailwind CSS, DaisyUI  
@@ -36,6 +37,7 @@
 - Categorize tasks into **To-Do, In Progress, and Done**  
 - Drag & Drop tasks between categories
 - Drag & Drop tasks for reordering
+- Track over due tasks
 - Persistent task storage  
 
 ### 🎨 **User Experience Enhancements**  
@@ -61,6 +63,7 @@
   "react-dnd-touch-backend": "^16.0.1",
   "react-dom": "^19.0.0",
   "react-hot-toast": "^2.5.2",
+  "sweetalert2": "^11.17.2",
   "react-icons": "^5.5.0",
   "react-router-dom": "^7.2.0"
 }

@@ -14,7 +14,7 @@ const Footer = () => {
               </p>
               <Link to="/" className="text-lg font-bold tracking-tight">
                 <div className=" text-gray-400">
-                  <span className="text-warning">Task</span>
+                  <span className="text-blue-500">Task</span>
                   <span className="text-white">Ly</span>
                 </div>
               </Link>
@@ -28,7 +28,7 @@ const Footer = () => {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-yellow-500"
+            className="text-xl hover:text-blue-500"
           >
             <FaXTwitter />
           </a>
@@ -36,7 +36,7 @@ const Footer = () => {
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-yellow-500"
+            className="text-xl hover:text-blue-500"
           >
             <FaYoutube />
           </a>
@@ -44,7 +44,7 @@ const Footer = () => {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-yellow-500"
+            className="text-xl hover:text-blue-500"
           >
             <FaFacebook />
           </a>
@@ -52,7 +52,7 @@ const Footer = () => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-yellow-500"
+            className="text-xl hover:text-blue-500"
           >
             <FaInstagram />
           </a>
@@ -60,7 +60,7 @@ const Footer = () => {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-yellow-500"
+            className="text-xl hover:text-blue-500"
           >
             <FaLinkedin />
           </a>

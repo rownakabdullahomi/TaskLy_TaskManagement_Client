@@ -30,33 +30,56 @@ const TaskCard = ({ task, index }) => {
   return (
     <div
       ref={(node) => ref(drop(node))}
-      className="border rounded-2xl shadow-md p-4 mb-4 bg-base-100"
+      className={`border rounded-2xl shadow-md p-4 mb-4 bg-base-100 ${
+        new Date(task?.dueDate) < new Date() && "border-error"
+      }`}
     >
       <h3 className="text-lg font-semibold">{task.name}</h3>
       <p className="my-2">{task.description}</p>
-      <p className={`my-2 badge badge-outline ${task.status === "inprogress"
-          ? "badge-warning"
-          : task.status === "todo"
-          ? "badge-secondary"
-          : "badge-accent"} `}>
+      <p
+        className={`my-2 badge badge-outline ${
+          task.status === "inprogress"
+            ? "badge-warning"
+            : task.status === "todo"
+            ? "badge-secondary"
+            : "badge-success"
+        } `}
+      >
         {task.status === "inprogress"
           ? "In Progress"
           : task.status === "todo"
           ? "Todo"
           : "Done"}
       </p>
+      {task.status !== "done" && (
+        <div className="flex gap-4 items-center">
+          {new Date(task?.dueDate) < new Date() && (
+            <p className="my-2 badge badge-error text-white">Overdue</p>
+          )}
+          {new Date(task?.dueDate) < new Date() && (
+            <p className="my-2 badge badge-error text-white">
+              Due Date: {moment(task?.dueDate).format("DD/MM/YYYY")}
+            </p>
+          )}
+        </div>
+      )}
+
       <p className="text-sm my-2">
         {moment(task.timeStamp).format("DD/MM/YYYY dddd hh.mm A")}
       </p>
       <div className="flex gap-3 mt-4">
-        <FaEdit
-          className="text-primary cursor-pointer"
-          onClick={() => handleEditTaskClick(task)}
-        />
-        <FaTrash
-          className="text-error cursor-pointer"
-          onClick={() => handleDeleteTaskClick(task._id)}
-        />
+        <span className="tooltip" data-tip="Edit">
+          <FaEdit
+            className="text-accent cursor-pointer"
+            onClick={() => handleEditTaskClick(task)}
+          />
+        </span>
+        <span className="tooltip" data-tip="Delete">
+          <FaTrash
+            className="text-error cursor-pointer"
+            onClick={() => handleDeleteTaskClick(task._id)}
+          />
+        </span>
       </div>
     </div>
   );

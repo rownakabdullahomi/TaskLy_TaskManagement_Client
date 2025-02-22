@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaHome, FaSignInAlt } from "react-icons/fa";
 
-import LoginGif from "../assets/LoginGif.gif";
+import LoginGif from "../assets/Computer login.gif";
 import { useAuthContext } from "../providers/AuthProvider";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
@@ -88,7 +88,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className="input input-bordered w-full mt-1 focus:ring focus:ring-warning"
+                className="input input-bordered w-full mt-1 focus:ring focus:ring-primary"
                 required
               />
             </div>
@@ -102,7 +102,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Enter your password"
-                  className="input input-bordered w-full mt-1 focus:ring focus:ring-warning"
+                  className="input input-bordered w-full mt-1 focus:ring focus:ring-primary"
                   required
                 />
                 <button
@@ -116,7 +116,7 @@ const Login = () => {
             </div>
 
             {/* Login Button */}
-            <button type="submit" className="btn btn-warning btn-outline w-full flex items-center justify-center gap-2 hover:!text-white transform hover:scale-105 transition duration-300">
+            <button type="submit" className="btn btn-primary btn-outline w-full flex items-center justify-center gap-2 hover:!text-white transform hover:scale-105 transition duration-300">
               <FaSignInAlt size={18} /> Login
             </button>
           </form>
@@ -127,7 +127,7 @@ const Login = () => {
           {/* Social Login */}
           <button
             onClick={handleGoogleLogin}
-            className="btn btn-outline btn-accent hover:!text-white w-full flex items-center justify-center transform hover:scale-105 transition duration-300"
+            className="btn btn-outline btn-neutral hover:!text-white w-full flex items-center justify-center transform hover:scale-105 transition duration-300"
           >
             <FcGoogle size={24} />
             Login With Google
@@ -136,7 +136,7 @@ const Login = () => {
           {/* Register Link */}
           <p className="text-center text-sm text-gray-600 mt-4">
             Don’t have an account?{" "}
-            <Link to="/register" className="text-warning font-medium">
+            <Link to="/register" className="text-secondary font-medium">
               Register here
             </Link>
           </p>

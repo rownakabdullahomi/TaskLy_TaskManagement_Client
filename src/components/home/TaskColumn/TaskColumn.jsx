@@ -20,7 +20,7 @@ const TaskColumn = ({ status }) => {
   return (
     <div
       ref={drop}
-      className="bg-base-200 p-4 rounded-lg hover:bg-base-300 border border-warning flex-1 h-full"
+      className="bg-base-200 p-4 rounded-lg hover:bg-base-300 border border-primary flex-1 h-full"
     >
       <h2 className="text-xl font-bold capitalize mb-4">
         {status === "inprogress"
